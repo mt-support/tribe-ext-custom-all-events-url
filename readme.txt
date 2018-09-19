@@ -1,21 +1,19 @@
-=== [Extension Name] ===
+=== The Events Calendar Extension: Custom All Events URL ===
 Contributors: ModernTribe
 Donate link: http://m.tri.be/29
 Tags: events, calendar
 Requires at least: 4.5
-Tested up to: 4.9.6
+Tested up to: 4.9.8
 Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Brief description of the extension.
+Allows the definition a custom URL for the 'All Events' link. under Events > Settings > General
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and Markdown parsed.
+Allows the definition a custom URL for the 'All Events' link. The setting can be found under Events > Settings > General tab
 
 == Installation ==
 
@@ -37,6 +35,6 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 == Changelog ==
 
-= [1.0.0] YYYY-MM-DD =
+= [1.0.0] 2018-09-19 =
 
 * Initial release

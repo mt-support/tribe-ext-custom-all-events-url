@@ -3,7 +3,7 @@
  * Plugin Name:       The Events Calendar Extension: Custom All Events URL
  * Plugin URI:        https://theeventscalendar.com/extensions/custom-all-events-url/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-custom-all-events-url/
- * Description:       Allows you to set up a custom URL for the 'All Events' link under Events > Settings > General
+ * Description:       Allows the definition a custom URL for the 'All Events' link. The setting can be found under <a href='edit.php?post_type=tribe_events&page=tribe-common'><em>Events > Settings > General tab</em></a>
  * Version:           1.0.0
  * Extension Class:   Tribe__Extension__Custom_All_Events_Url
  * Author:            Modern Tribe, Inc.
@@ -51,30 +51,11 @@ if (
 		 */
 		public function init() {
 			// Load plugin textdomain
-			// Don't forget to generate the 'languages/match-the-plugin-directory-name.pot' file
 			load_plugin_textdomain( 'tribe-ext-custom-all-events-url', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 			/**
 			 * Protect against fatals by specifying the required minimum PHP
-			 * version. Make sure to match the readme.txt header.
-			 * All extensions require PHP 5.6+, following along with https://theeventscalendar.com/knowledgebase/php-version-requirement-changes/
-			 *
-			 * Delete this paragraph and the non-applicable comments below.
-			 *
-			 * Note that older version syntax errors may still throw fatals even
-			 * if you implement this PHP version checking so QA it at least once.
-			 *
-			 * @link https://secure.php.net/manual/en/migration56.new-features.php
-			 * 5.6: Variadic Functions, Argument Unpacking, and Constant Expressions
-			 *
-			 * @link https://secure.php.net/manual/en/migration70.new-features.php
-			 * 7.0: Return Types, Scalar Type Hints, Spaceship Operator, Constant Arrays Using define(), Anonymous Classes, intdiv(), and preg_replace_callback_array()
-			 *
-			 * @link https://secure.php.net/manual/en/migration71.new-features.php
-			 * 7.1: Class Constant Visibility, Nullable Types, Multiple Exceptions per Catch Block, `iterable` Pseudo-Type, and Negative String Offsets
-			 *
-			 * @link https://secure.php.net/manual/en/migration72.new-features.php
-			 * 7.2: `object` Parameter and Covariant Return Typing, Abstract Function Override, and Allow Trailing Comma for Grouped Namespaces
+			 * version.
 			 */
 			$php_required_version = '5.6';
 
@@ -89,18 +70,23 @@ if (
 					$message .= '</p>';
 					tribe_notice( $this->get_name(), $message, 'type=error' );
 				}
-
 				return;
 			}
 
-			// Insert filters and hooks here
+			// Filters and hooks
 			add_action( 'admin_init', array( $this, 'add_settings' ) );
 			add_filter( 'tribe_get_events_link', array( $this, 'custom_all_events_url' ) );
 
 			//singleEventSlug
 		}
 
+		/**
+		 * Adds the setting field to Events > Settings > General tab
+		 * The setting will appear above the "End of day cutoff" setting
+		 * (below the "Single event URL slug" setting)
+		 */
 		public function add_settings() {
+
 			require_once dirname( __FILE__ ) . '/src/Tribe/Settings_Helper.php';
 
 			$setting_helper = new Tribe__Settings_Helper();
@@ -122,7 +108,11 @@ if (
 		}
 
 		/**
-		 * Include a docblock for every class method and property.
+		 * Reads and returns the custom 'All Events' URL if it is set
+		 *
+		 * @param $url
+		 *
+		 * @return mixed
 		 */
 		function custom_all_events_url( $url ) {
 			$custom_url = tribe_get_option( $this->opts_prefix . 'custom_all_events_url' );
