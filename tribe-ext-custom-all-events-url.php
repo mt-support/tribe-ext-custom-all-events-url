@@ -65,7 +65,7 @@ if (
 					&& current_user_can( 'activate_plugins' )
 				) {
 					$message = '<p>';
-					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'match-the-plugin-directory-name' ), $this->get_name(), $php_required_version );
+					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-custom-all-events-url' ), $this->get_name(), $php_required_version );
 					$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
 					$message .= '</p>';
 					tribe_notice( $this->get_name(), $message, 'type=error' );
@@ -95,7 +95,7 @@ if (
 				$this->opts_prefix . 'custom_all_events_url' => array(
 					'type'            => 'text',
 					'label'           => esc_html__( 'Custom \'All Events\' URL', 'tribe-ext-custom-all-events-url' ),
-					'tooltip'         => 'Enter your custom URL, including \'http://\' or \'https://\', for example <code>https://mydomain.com/events/</code>.',
+					'tooltip'         => esc_html__( 'Enter your custom URL, including \'http://\' or \'https://\', for example <code>https://mydomain.com/events/</code>.', 'tribe-ext-custom-all-events-url' ),
 					'validation_type' => 'html',
 				)
 			);
