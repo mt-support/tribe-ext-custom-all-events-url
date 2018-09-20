@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: The Events Calendar Extension: Custom 'All Events' URL\n"
-"POT-Creation-Date: 2018-09-19 14:26+0200\n"
+"Project-Id-Version: The Events Calendar Extension: Custom 'All Events' "
+"URL\n"
+"POT-Creation-Date: 2018-09-20 21:04+0200\n"
 "PO-Revision-Date: 2018-09-19 14:24+0200\n"
 "Last-Translator: András Guseo <aguseo@gmail.com>\n"
 "Language-Team: András Guseo <aguseo@gmail.com>\n"
@@ -16,8 +17,8 @@ msgstr ""
 "X-Poedit-WPHeader: tribe-ext-custom-all-events-url.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -37,9 +38,9 @@ msgid "Custom 'All Events' URL"
 msgstr ""
 
 #: tribe-ext-custom-all-events-url.php:98
+#, php-format
 msgid ""
-"Enter your custom URL, including 'http://' or 'https://', for example "
-"<code>https://mydomain.com/events/</code>."
+"Enter your custom URL, including 'http://' or 'https://', for example %s."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -52,9 +53,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Allows the definition a custom URL for the 'All Events' link. The setting "
-"can be found under <a href='edit.php?post_type=tribe_events&page=tribe-"
-"common'><em>Events > Settings > General tab</em></a>"
+"Allows the definition of a custom URL for the 'All Events' link. The "
+"setting can be found under <em>Events > Settings > General tab</em>"
 msgstr ""
 
 #. Author of the plugin/theme

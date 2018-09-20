@@ -13,7 +13,7 @@ Allows the definition a custom URL for the 'All Events' link. under Events > Set
 
 == Description ==
 
-Allows the definition a custom URL for the 'All Events' link. The setting can be found under Events > Settings > General tab
+Allows the definition of a custom URL for the 'All Events' link. The setting can be found under Events > Settings > General tab
 
 == Installation ==
 
@@ -35,6 +35,6 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 == Changelog ==
 
-= [1.0.0] 2018-09-19 =
+= [1.0.0] 2018-09-20 =
 
 * Initial release

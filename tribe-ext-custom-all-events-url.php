@@ -3,7 +3,7 @@
  * Plugin Name:       The Events Calendar Extension: Custom 'All Events' URL
  * Plugin URI:        https://theeventscalendar.com/extensions/custom-all-events-url/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-custom-all-events-url/
- * Description:       Allows the definition a custom URL for the 'All Events' link. The setting can be found under <a href='edit.php?post_type=tribe_events&page=tribe-common'><em>Events > Settings > General tab</em></a>
+ * Description:       Allows the definition of a custom URL for the 'All Events' link. The setting can be found under <em>Events > Settings > General tab</em>
  * Version:           1.0.0
  * Extension Class:   Tribe__Extension__Custom_All_Events_Url
  * Author:            Modern Tribe, Inc.
@@ -94,8 +94,8 @@ if (
 			$fields = array(
 				$this->opts_prefix . 'custom_all_events_url' => array(
 					'type'            => 'text',
-					'label'           => esc_html__( 'Custom \'All Events\' URL', 'tribe-ext-custom-all-events-url' ),
-					'tooltip'         => esc_html__( 'Enter your custom URL, including \'http://\' or \'https://\', for example <code>https://mydomain.com/events/</code>.', 'tribe-ext-custom-all-events-url' ),
+					'label'           => esc_html__( "Custom 'All Events' URL", "tribe-ext-custom-all-events-url" ),
+					'tooltip'         => sprintf( esc_html__( "Enter your custom URL, including 'http://' or 'https://', for example %s.", "tribe-ext-custom-all-events-url" ), '<code>https://mydomain.com/events/</code>' ),
 					'validation_type' => 'html',
 				)
 			);
