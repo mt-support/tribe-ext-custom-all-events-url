@@ -1,4 +1,4 @@
-=== The Events Calendar Extension: Custom All Events URL ===
+=== The Events Calendar Extension: Custom 'All Events' URL ===
 Contributors: ModernTribe
 Donate link: http://m.tri.be/29
 Tags: events, calendar
