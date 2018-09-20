@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       The Events Calendar Extension: Custom All Events URL
+ * Plugin Name:       The Events Calendar Extension: Custom 'All Events' URL
  * Plugin URI:        https://theeventscalendar.com/extensions/custom-all-events-url/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-custom-all-events-url/
  * Description:       Allows the definition a custom URL for the 'All Events' link. The setting can be found under <a href='edit.php?post_type=tribe_events&page=tribe-common'><em>Events > Settings > General tab</em></a>
