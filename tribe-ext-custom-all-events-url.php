@@ -41,8 +41,6 @@ if (
 		 * This always executes even if the required plugins are not present.
 		 */
 		public function construct() {
-			// Requirements and other properties such as the extension homepage can be defined here.
-			// Examples:
 			$this->add_required_plugin( 'Tribe__Events__Main' );
 		}
 
@@ -77,8 +75,6 @@ if (
 			// Filters and hooks
 			add_action( 'admin_init', [ $this, 'add_settings' ] );
 			add_filter( 'tribe_get_events_link', [ $this, 'custom_all_events_url' ] );
-
-			//singleEventSlug
 		}
 
 		/**
@@ -109,6 +105,8 @@ if (
 
 		/**
 		 * Reads and returns the custom 'All Events' URL if it is set
+		 *
+		 * @see tribe_get_events_link()
 		 *
 		 * @param $url
 		 *
