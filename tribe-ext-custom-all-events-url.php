@@ -74,8 +74,8 @@ if (
 			}
 
 			// Filters and hooks
-			add_action( 'admin_init', array( $this, 'add_settings' ) );
-			add_filter( 'tribe_get_events_link', array( $this, 'custom_all_events_url' ) );
+			add_action( 'admin_init', [ $this, 'add_settings' ] );
+			add_filter( 'tribe_get_events_link', [ $this, 'custom_all_events_url' ] );
 
 			//singleEventSlug
 		}
@@ -91,14 +91,14 @@ if (
 
 			$setting_helper = new Tribe__Settings_Helper();
 
-			$fields = array(
-				$this->opts_prefix . 'custom_all_events_url' => array(
+			$fields = [
+				$this->opts_prefix . 'custom_all_events_url' => [
 					'type'            => 'text',
 					'label'           => esc_html__( 'Custom "All Events" URL', 'tribe-ext-custom-all-events-url' ),
 					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', 'tribe-ext-custom-all-events-url' ), '<code>https://mydomain.com/events/</code>' ),
 					'validation_type' => 'html',
-				)
-			);
+				]
+			];
 			$setting_helper->add_fields(
 				$fields,
 				'general',

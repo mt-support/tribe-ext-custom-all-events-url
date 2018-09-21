@@ -19,28 +19,28 @@ class Tribe__Settings_Helper {
 	 *
 	 * @var array
 	 */
-	private $insert_fields_misc = array();
+	private $insert_fields_misc = [];
 
 	/**
 	 * Fields that will be inserted above a specified field
 	 *
 	 * @var array
 	 */
-	private $insert_fields_above = array();
+	private $insert_fields_above = [];
 
 	/**
 	 * Fields that will be inserted below a specified field
 	 *
 	 * @var array
 	 */
-	private $insert_fields_below = array();
+	private $insert_fields_below = [];
 
 	/**
 	 * Array of settings being added to a Tribe Settings tab
 	 *
 	 * @var array
 	 */
-	private $remove_fields = array();
+	private $remove_fields = [];
 
 
 	/**
@@ -49,7 +49,7 @@ class Tribe__Settings_Helper {
 	 * @param int $priority Priority at which this hooks into 'tribe_settings_tab_fields'.
 	 */
 	public function __construct( $priority = 100 ) {
-		add_filter( 'tribe_settings_tab_fields', array( $this, 'filter_options' ), $priority, 2 );
+		add_filter( 'tribe_settings_tab_fields', [ $this, 'filter_options' ], $priority, 2 );
 	}
 
 
@@ -58,14 +58,14 @@ class Tribe__Settings_Helper {
 	 *
 	 * @param string $field_key         Option key for your setting. Example: 'fancyOptionName'.
 	 * @param array $field_args         See Tribe__Field() for available args.
-	 *                                  Example: array( 'type' => 'checkbox_bool, 'label' => ... )
+	 *                                  Example: [ 'type' => 'checkbox_bool, 'label' => ... ]
 	 * @param string $setting_tab       Settings tab where this will be added. Example: 'display'.
 	 * @param string $neighboring_field (optional) The field key/HTML name="" attribute to insert this under.
 	 * @param bool   $above             (optional) Insert above or below its neighbor.
 	 */
 	public function add_field( $field_key, $field_args, $setting_tab, $neighboring_field = null, $above = true ) {
 		// Our settings walker needs 'key' => arg pairs.
-		$field = array( $field_key => $field_args );
+		$field = [ $field_key => $field_args ];
 
 		$this->add_fields( $field, $setting_tab, $neighboring_field, $above );
 	}
@@ -83,19 +83,19 @@ class Tribe__Settings_Helper {
 			// If neighbor is not specified, add this to misc section.
 			$this->insert_fields_misc = array_replace_recursive(
 				$this->insert_fields_misc,
-				array( $setting_tab => $fields )
+				[ $setting_tab => $fields ]
 			);
 		} elseif ( true === $above ) {
 			// Add to above fields list with neighbor specified.
 			$this->insert_fields_above = array_replace_recursive(
 				$this->insert_fields_above,
-				array( $setting_tab => array( $neighboring_field => $fields ) )
+				[ $setting_tab => [ $neighboring_field => $fields ] ]
 			);
 		} else {
 			// Add to below fields list with neighbor specified.
 			$this->insert_fields_below = array_replace_recursive(
 				$this->insert_fields_below,
-				array( $setting_tab => array( $neighboring_field => $fields ) )
+				[ $setting_tab => [ $neighboring_field => $fields ] ]
 			);
 		}
 
@@ -128,12 +128,12 @@ class Tribe__Settings_Helper {
 
 			// Add a misc heading if none exists.
 			if ( ! array_key_exists( 'tribeMiscSettings', $fields ) ) {
-				$misc_heading = array(
-					'tribeMiscSettings' => array(
+				$misc_heading = [
+					'tribeMiscSettings' => [
 						'type' => 'html',
 						'html' => '<h3>' . esc_html__( 'Miscellaneous Settings', 'tribe-ext-custom-all-events-url' ) . '</h3>',
-					),
-				);
+					],
+				];
 				$fields = Tribe__Main::array_insert_before_key( 'tribe-form-content-end', $fields, $misc_heading );
 			}
 
