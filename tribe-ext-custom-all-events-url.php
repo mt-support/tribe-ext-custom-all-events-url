@@ -70,6 +70,7 @@ if (
 					$message .= '</p>';
 					tribe_notice( $this->get_name(), $message, 'type=error' );
 				}
+
 				return;
 			}
 
@@ -86,7 +87,6 @@ if (
 		 * (below the "Single event URL slug" setting)
 		 */
 		public function add_settings() {
-
 			require_once dirname( __FILE__ ) . '/src/Tribe/Settings_Helper.php';
 
 			$setting_helper = new Tribe__Settings_Helper();
@@ -120,6 +120,7 @@ if (
 			if ( ! empty ( $custom_url ) ) {
 				$url = $custom_url;
 			}
+
 			return $url;
 		}
 

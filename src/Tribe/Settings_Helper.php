@@ -57,7 +57,7 @@ class Tribe__Settings_Helper {
 	 * Add a field to a Tribe Settings tab
 	 *
 	 * @param string $field_key         Option key for your setting. Example: 'fancyOptionName'.
-	 * @param array $field_args         See Tribe__Field() for available args.
+	 * @param array  $field_args        See Tribe__Field() for available args.
 	 *                                  Example: [ 'type' => 'checkbox_bool, 'label' => ... ]
 	 * @param string $setting_tab       Settings tab where this will be added. Example: 'display'.
 	 * @param string $neighboring_field (optional) The field key/HTML name="" attribute to insert this under.
@@ -109,15 +109,15 @@ class Tribe__Settings_Helper {
 	 * @param string $setting_tab Settings tab where this will be added. Example: 'display'.
 	 */
 	public function remove_field( $field_key, $setting_tab ) {
-		$this->remove_fields[ $setting_tab ][] = $field_key;
+		$this->remove_fields[$setting_tab][] = $field_key;
 	}
 
 
 	/**
 	 * Attached to 'tribe_settings_tab_fields' to add/remove this class' fields on Tribe Settings pages.
 	 *
-	 * @param array $fields The fields within tribe settings page.
-	 * @param string $tab   The settings tab key.
+	 * @param array  $fields The fields within tribe settings page.
+	 * @param string $tab    The settings tab key.
 	 *
 	 * @return array $fields The fields within tribe settings page
 	 */
@@ -134,17 +134,17 @@ class Tribe__Settings_Helper {
 						'html' => '<h3>' . esc_html__( 'Miscellaneous Settings', 'tribe-ext-custom-all-events-url' ) . '</h3>',
 					],
 				];
-				$fields = Tribe__Main::array_insert_before_key( 'tribe-form-content-end', $fields, $misc_heading );
+				$fields       = Tribe__Main::array_insert_before_key( 'tribe-form-content-end', $fields, $misc_heading );
 			}
 
 			// Insert these settings under misc heading.
-			$fields = Tribe__Main::array_insert_after_key( 'tribeMiscSettings', $fields, $this->insert_fields_misc[ $tab ] );
+			$fields = Tribe__Main::array_insert_after_key( 'tribeMiscSettings', $fields, $this->insert_fields_misc[$tab] );
 		}
 
 		// Fields inserted above a neighboring field.
 		if ( array_key_exists( $tab, $this->insert_fields_above ) ) {
 
-			foreach ( $this->insert_fields_above[ $tab ] as $insert_after => $new_field ) {
+			foreach ( $this->insert_fields_above[$tab] as $insert_after => $new_field ) {
 				$fields = Tribe__Main::array_insert_before_key( $insert_after, $fields, $new_field );
 			}
 		}
@@ -152,7 +152,7 @@ class Tribe__Settings_Helper {
 		// Fields inserted below a neighboring field.
 		if ( array_key_exists( $tab, $this->insert_fields_below ) ) {
 
-			foreach ( $this->insert_fields_below[ $tab ] as $insert_after => $new_field ) {
+			foreach ( $this->insert_fields_below[$tab] as $insert_after => $new_field ) {
 				$fields = Tribe__Main::array_insert_after_key( $insert_after, $fields, $new_field );
 			}
 		}
@@ -160,9 +160,9 @@ class Tribe__Settings_Helper {
 		// Fields that will be removed.
 		if ( array_key_exists( $tab, $this->remove_fields ) ) {
 
-			foreach ( $this->remove_fields[ $tab ] as $remove_field ) {
+			foreach ( $this->remove_fields[$tab] as $remove_field ) {
 				if ( array_key_exists( $remove_field, $fields ) ) {
-					unset( $fields[ $remove_field ] );
+					unset( $fields[$remove_field] );
 				}
 			}
 		}
