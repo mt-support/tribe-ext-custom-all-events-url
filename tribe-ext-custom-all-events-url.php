@@ -94,8 +94,8 @@ if (
 			$fields = array(
 				$this->opts_prefix . 'custom_all_events_url' => array(
 					'type'            => 'text',
-					'label'           => esc_html__( "Custom 'All Events' URL", "tribe-ext-custom-all-events-url" ),
-					'tooltip'         => sprintf( esc_html__( "Enter your custom URL, including 'http://' or 'https://', for example %s.", "tribe-ext-custom-all-events-url" ), '<code>https://mydomain.com/events/</code>' ),
+					'label'           => esc_html__( 'Custom "All Events" URL', 'tribe-ext-custom-all-events-url' ),
+					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', 'tribe-ext-custom-all-events-url' ), '<code>https://mydomain.com/events/</code>' ),
 					'validation_type' => 'html',
 				)
 			);
