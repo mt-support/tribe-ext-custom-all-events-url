@@ -10,6 +10,8 @@ License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Allows the definition a custom URL for the 'All Events' link. under Events > Settings > General
+Useful if you are using a different starting page for the calendar than the main calendar page,
+for example when embedding the calendar with a shortcode.
 
 == Description ==
 

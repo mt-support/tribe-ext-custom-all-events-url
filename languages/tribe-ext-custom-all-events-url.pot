@@ -4,7 +4,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: The Events Calendar Extension: Custom 'All Events' "
 "URL\n"
-"POT-Creation-Date: 2018-09-21 22:07+0200\n"
+"POT-Creation-Date: 2018-10-24 22:50+0200\n"
 "PO-Revision-Date: 2018-09-19 14:24+0200\n"
 "Last-Translator: András Guseo <aguseo@gmail.com>\n"
 "Language-Team: András Guseo <aguseo@gmail.com>\n"
@@ -26,21 +26,22 @@ msgstr ""
 msgid "Miscellaneous Settings"
 msgstr ""
 
-#: tribe-ext-custom-all-events-url.php:68
+#: tribe-ext-custom-all-events-url.php:66
 #, php-format
 msgid ""
 "%s requires PHP version %s or newer to work. Please contact your website "
 "host and inquire about updating PHP."
 msgstr ""
 
-#: tribe-ext-custom-all-events-url.php:97
-msgid "Custom 'All Events' URL"
+#: tribe-ext-custom-all-events-url.php:93
+msgid "Custom \"All Events\" URL"
 msgstr ""
 
-#: tribe-ext-custom-all-events-url.php:98
+#: tribe-ext-custom-all-events-url.php:94
 #, php-format
 msgid ""
-"Enter your custom URL, including 'http://' or 'https://', for example %s."
+"Enter your custom URL, including \"http://\" or \"https://\", for example "
+"%s."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -54,7 +55,10 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "Allows the definition of a custom URL for the 'All Events' link. The "
-"setting can be found under <em>Events > Settings > General tab</em>"
+"setting can be found under <em>Events > Settings > General tab</em>. "
+"Useful if you are using a different starting page for the calendar than "
+"the main calendar page, for example when embedding the calendar with a "
+"shortcode."
 msgstr ""
 
 #. Author of the plugin/theme
