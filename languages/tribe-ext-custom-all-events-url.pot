@@ -1,0 +1,70 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: The Events Calendar Extension: Custom 'All Events' "
+"URL\n"
+"POT-Creation-Date: 2018-10-24 22:50+0200\n"
+"PO-Revision-Date: 2018-09-19 14:24+0200\n"
+"Last-Translator: András Guseo <aguseo@gmail.com>\n"
+"Language-Team: András Guseo <aguseo@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: tribe-ext-custom-all-events-url.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: src/Tribe/Settings_Helper.php:134
+msgid "Miscellaneous Settings"
+msgstr ""
+
+#: tribe-ext-custom-all-events-url.php:66
+#, php-format
+msgid ""
+"%s requires PHP version %s or newer to work. Please contact your website "
+"host and inquire about updating PHP."
+msgstr ""
+
+#: tribe-ext-custom-all-events-url.php:93
+msgid "Custom \"All Events\" URL"
+msgstr ""
+
+#: tribe-ext-custom-all-events-url.php:94
+#, php-format
+msgid ""
+"Enter your custom URL, including \"http://\" or \"https://\", for example "
+"%s."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "The Events Calendar Extension: Custom 'All Events' URL"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://theeventscalendar.com/extensions/custom-all-events-url/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Allows the definition of a custom URL for the 'All Events' link. The "
+"setting can be found under <em>Events > Settings > General tab</em>. "
+"Useful if you are using a different starting page for the calendar than "
+"the main calendar page, for example when embedding the calendar with a "
+"shortcode."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/1971"
+msgstr ""
