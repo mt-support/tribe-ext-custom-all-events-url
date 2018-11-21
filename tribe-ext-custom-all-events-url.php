@@ -4,8 +4,8 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/custom-all-events-url/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-custom-all-events-url/
  * Description:       Allows the definition of a custom URL for the 'All Events' link. The setting can be found under <em>Events > Settings > General tab</em>. Useful if you are using a different starting page for the calendar than the main calendar page, for example when embedding the calendar with a shortcode.
- * Version:           1.0.0
- * Extension Class:   Tribe__Extension__Custom_All_Events_Url
+ * Version:           1.0.1
+ * Extension Class:   Tribe\Extensions\CustomAllEventsUrl\Main
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
  * License:           GPL version 3 or any later version
@@ -23,17 +23,38 @@
  *     GNU General Public License for more details.
  */
 
+
+namespace Tribe\Extensions\CustomAllEventsUrl;
+
+use Tribe__Autoloader;
+use Tribe__Dependency;
+use Tribe__Extension;
+
+/**
+ * Define Constants
+ */
+
+if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
+	define( __NAMESPACE__ . '\NS', __NAMESPACE__ . '\\' );
+}
+
+if ( ! defined( NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
+	// `Tribe\Extensions\Example\PLUGIN_TEXT_DOMAIN` is defined
+	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-custom-all-events-url' );
+}
+
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
 if (
 	class_exists( 'Tribe__Extension' )
-	&& ! class_exists( 'Tribe__Extension__Custom_All_Events_Url' )
+	&& ! class_exists( NS . 'Main' )
 ) {
 	/**
 	 * Extension main class, class begins loading on init() function.
 	 */
-	class Tribe__Extension__Custom_All_Events_Url extends Tribe__Extension {
+	class Main extends Tribe__Extension {
 
-		protected $opts_prefix = 'tribe_ext_';
+		/** @var Tribe__Autoloader */
+		private $class_loader;
 
 		/**
 		 * Setup the Extension's properties.
@@ -41,7 +62,7 @@ if (
 		 * This always executes even if the required plugins are not present.
 		 */
 		public function construct() {
-			$this->add_required_plugin( 'Tribe__Events__Main' );
+			$this->add_required_plugin( 'Tribe__Events__Main', '4.3.3' );
 		}
 
 		/**
@@ -50,11 +71,24 @@ if (
 		public function init() {
 
 			// Load plugin textdomain
-			load_plugin_textdomain( 'tribe-ext-custom-all-events-url', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( PLUGIN_TEXT_DOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
-			/**
-			 * Protect against fatals by specifying the required minimum PHP version.
-			 */
+			if ( ! $this->php_version_check() ) {
+				return;
+			}
+
+			$this->class_loader();
+
+			if ( is_admin() ) {
+				new Settings();
+			}
+
+			// Filters and hooks
+			//add_action( 'admin_init', [ $this, 'add_settings' ] );
+			add_filter( 'tribe_get_events_link', [ $this, 'custom_all_events_url' ] );
+		}
+
+		private function php_version_check() {
 			$php_required_version = '5.6';
 
 			if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
@@ -63,44 +97,38 @@ if (
 					&& current_user_can( 'activate_plugins' )
 				) {
 					$message = '<p>';
-					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-custom-all-events-url' ), $this->get_name(), $php_required_version );
+					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
 					$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
 					$message .= '</p>';
-					tribe_notice( $this->get_name(), $message, 'type=error' );
+
+					tribe_notice( PLUGIN_TEXT_DOMAIN . '-php-version', $message, [ 'type' => 'error' ] );
 				}
 
-				return;
+				return false;
 			}
 
-			// Filters and hooks
-			add_action( 'admin_init', [ $this, 'add_settings' ] );
-			add_filter( 'tribe_get_events_link', [ $this, 'custom_all_events_url' ] );
+			return true;
 		}
 
 		/**
-		 * Adds the setting field to Events > Settings > General tab
-		 * The setting will appear above the "End of day cutoff" setting
-		 * (below the "Single event URL slug" setting)
+		 * Use Tribe Autoloader for all class files within this namespace in the 'src' directory.
+		 *
+		 * @return Tribe__Autoloader
 		 */
-		public function add_settings() {
-			require_once dirname( __FILE__ ) . '/src/Tribe/Settings_Helper.php';
+		public function class_loader() {
 
-			$setting_helper = new Tribe__Settings_Helper();
+			if ( empty( $this->class_loader ) ) {
+				$this->class_loader = new Tribe__Autoloader;
+				$this->class_loader->set_dir_separator( '\\' );
+				$this->class_loader->register_prefix(
+					NS,
+					__DIR__ . DIRECTORY_SEPARATOR . 'src'
+				);
+			}
 
-			$fields = [
-				$this->opts_prefix . 'custom_all_events_url' => [
-					'type'            => 'text',
-					'label'           => esc_html__( 'Custom "All Events" URL', 'tribe-ext-custom-all-events-url' ),
-					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', 'tribe-ext-custom-all-events-url' ), '<code>https://mydomain.com/events/</code>' ),
-					'validation_type' => 'html',
-				]
-			];
-			$setting_helper->add_fields(
-				$fields,
-				'general',
-				'multiDayCutoff',
-				true
-			);
+			$this->class_loader->register_autoloader();
+			echo '<script>console.log("xxx");</script>';
+			return $this->class_loader;
 		}
 
 		/**

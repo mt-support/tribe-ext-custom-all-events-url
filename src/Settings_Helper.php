@@ -1,18 +1,13 @@
 <?php
 
-// Do not load directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	die( '-1' );
-}
+namespace Tribe\Extensions\CustomAllEventsUrl;
 
-if ( class_exists( 'Tribe__Settings_Helper' ) ) {
-	return;
-}
+use Tribe__Main;
 
 /**
  * Helper for inserting/removing fields on the WP Admin Tribe Settings pages
  */
-class Tribe__Settings_Helper {
+class Settings_Helper {
 
 	/**
 	 * Fields inserted into misc section
@@ -106,7 +101,7 @@ class Tribe__Settings_Helper {
 	 * Remove a field from one of the tabs in WP Admin > Events > Settings
 	 *
 	 * @param string $field_key   Option key for your setting. Example: 'fancyOptionName'.
-	 * @param string $setting_tab Settings tab where this will be added. Example: 'display'.
+	 * @param string $setting_tab Settings tab from where this will be removed. Example: 'display'.
 	 */
 	public function remove_field( $field_key, $setting_tab ) {
 		$this->remove_fields[$setting_tab][] = $field_key;
@@ -131,7 +126,7 @@ class Tribe__Settings_Helper {
 				$misc_heading = [
 					'tribeMiscSettings' => [
 						'type' => 'html',
-						'html' => '<h3>' . esc_html__( 'Miscellaneous Settings', 'tribe-ext-custom-all-events-url' ) . '</h3>',
+						'html' => '<h3>' . esc_html__( 'Miscellaneous Settings', PLUGIN_TEXT_DOMAIN ) . '</h3>',
 					],
 				];
 				$fields       = Tribe__Main::array_insert_before_key( 'tribe-form-content-end', $fields, $misc_heading );
@@ -170,5 +165,4 @@ class Tribe__Settings_Helper {
 		return $fields;
 	}
 
-}
-
+} // class
