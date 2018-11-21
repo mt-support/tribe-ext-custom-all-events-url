@@ -4,7 +4,7 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/custom-all-events-url/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-custom-all-events-url/
  * Description:       Allows the definition of a custom URL for the 'All Events' link. The setting can be found under <em>Events > Settings > General tab</em>. Useful if you are using a different starting page for the calendar than the main calendar page, for example when embedding the calendar with a shortcode.
- * Version:           1.0.1
+ * Version:           1.0.0
  * Extension Class:   Tribe\Extensions\CustomAllEventsUrl\Main
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
@@ -27,7 +27,6 @@
 namespace Tribe\Extensions\CustomAllEventsUrl;
 
 use Tribe__Autoloader;
-use Tribe__Dependency;
 use Tribe__Extension;
 
 /**
@@ -57,12 +56,19 @@ if (
 		private $class_loader;
 
 		/**
+		 * The prefix for our settings keys.
+		 *
+		 * @var string
+		 */
+		protected $opts_prefix = 'tribe_ext_';
+
+		/**
 		 * Setup the Extension's properties.
 		 *
 		 * This always executes even if the required plugins are not present.
 		 */
 		public function construct() {
-			$this->add_required_plugin( 'Tribe__Events__Main', '4.3.3' );
+			$this->add_required_plugin( 'Tribe__Events__Main' );
 		}
 
 		/**
@@ -73,12 +79,15 @@ if (
 			// Load plugin textdomain
 			load_plugin_textdomain( PLUGIN_TEXT_DOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
+			// PHP version check
 			if ( ! $this->php_version_check() ) {
 				return;
 			}
 
+			// Load classes
 			$this->class_loader();
 
+			// Load settings
 			if ( is_admin() ) {
 				new Settings();
 			}
@@ -88,6 +97,11 @@ if (
 			add_filter( 'tribe_get_events_link', [ $this, 'custom_all_events_url' ] );
 		}
 
+		/**
+		 * PHP version check
+		 *
+		 * @return bool
+		 */
 		private function php_version_check() {
 			$php_required_version = '5.6';
 
@@ -127,7 +141,7 @@ if (
 			}
 
 			$this->class_loader->register_autoloader();
-			echo '<script>console.log("xxx");</script>';
+
 			return $this->class_loader;
 		}
 
@@ -141,6 +155,7 @@ if (
 		 * @return mixed
 		 */
 		function custom_all_events_url( $url ) {
+
 			$custom_url = tribe_get_option( $this->opts_prefix . 'custom_all_events_url' );
 
 			if ( ! empty ( $custom_url ) ) {

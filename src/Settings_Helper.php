@@ -96,7 +96,6 @@ class Settings_Helper {
 
 	}
 
-
 	/**
 	 * Remove a field from one of the tabs in WP Admin > Events > Settings
 	 *
