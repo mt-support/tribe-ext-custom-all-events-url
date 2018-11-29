@@ -156,13 +156,24 @@ if (
 		 */
 		function custom_all_events_url( $url ) {
 
-			$custom_url = tribe_get_option( $this->opts_prefix . 'custom_all_events_url' );
+			$custom_url = $this->get_custom_url();
 
 			if ( ! empty ( $custom_url ) ) {
 				$url = $custom_url;
 			}
 
 			return $url;
+		}
+
+		/**
+		 * Getting the `custom_all_events_url` value.
+		 *
+		 * @return mixed
+		 */
+		public function get_custom_url() {
+			$settings = new Settings();
+			$value = $settings->get_option( 'custom_all_events_url' );
+			return $value;
 		}
 
 	} // end class
