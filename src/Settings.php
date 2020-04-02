@@ -25,16 +25,16 @@ if ( ! class_exists( Settings::class ) ) {
 		 *
 		 * @var string
 		 */
-		private $opts_prefix = '';
+		private $options_prefix = '';
 
 		/**
 		 * Settings constructor.
 		 */
-		public function __construct( $opts_prefix = 'tribe_ext' ) {
+		public function __construct( $options_prefix ) {
 
 			$this->settings_helper = new Settings_Helper();
 
-			$this->set_options_prefix( $opts_prefix );
+			$this->set_options_prefix( $options_prefix );
 
 			// Add settings specific to OSM
 			add_action( 'admin_init', [ $this, 'add_settings' ] );
@@ -81,6 +81,15 @@ if ( ! class_exists( Settings::class ) ) {
 		}
 
 		/**
+		 * Get this extension's options prefix.
+		 *
+		 * @return string
+		 */
+		public function get_options_prefix() {
+			return $this->$options_prefix;
+		}
+
+		/**
 		 * Given an option key, get this extension's option value.
 		 *
 		 * This automatically prepends this extension's option prefix so you can just do `$this->get_option( 'a_setting' )`.
@@ -115,15 +124,6 @@ if ( ! class_exists( Settings::class ) ) {
 		}
 
 		/**
-		 * Get this extension's options prefix.
-		 *
-		 * @return string
-		 */
-		public function get_options_prefix() {
-			return $this->opts_prefix;
-		}
-
-		/**
 		 * Given an option key, delete this extension's option value.
 		 *
 		 * This automatically prepends this extension's option prefix so you can just do `$this->delete_option( 'a_setting' )`.
@@ -147,7 +147,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 */
 		public function add_settings() {
 			$fields = [
-				$this->opts_prefix . 'custom_all_events_url' => [
+				$this->$options_prefix . 'custom_all_events_url' => [
 					'type'            => 'text',
 					'label'           => esc_html__( 'Custom "All Events" URL', PLUGIN_TEXT_DOMAIN ),
 					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', PLUGIN_TEXT_DOMAIN ), '<code>https://wpshindig.com/events/</code>' ),

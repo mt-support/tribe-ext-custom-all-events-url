@@ -39,7 +39,7 @@ if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
 }
 
 if ( ! defined( NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
-	// `Tribe\Extensions\Example\PLUGIN_TEXT_DOMAIN` is defined
+	// `Tribe\Extensions\CustomAllEventsUrl\PLUGIN_TEXT_DOMAIN` is defined
 	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-custom-all-events-url' );
 }
 
@@ -75,7 +75,7 @@ if (
 		 *
 		 * Settings_Helper will append a trailing underscore before each option.
 		 *
-		 * @see \Tribe\Extensions\Example\Settings::set_options_prefix()
+		 * @see \Tribe\Extensions\CustomAllEventsUrl\Settings::set_options_prefix()
 		 *
 		 * @return string
 		 */
@@ -192,9 +192,13 @@ if (
 		 * @return mixed
 		 */
 		public function get_custom_url() {
-			$settings = new Settings();
-			$value = $settings->get_option( 'custom_all_events_url' );
-			return $value;
+			//$settings = new Settings();
+			$settings = $this->get_settings();
+
+			return $settings->get_option( 'custom_all_events_url' );
+
+			//$value = $settings->get_option( 'custom_all_events_url' );
+			//return $value;
 		}
 
 	} // end class
