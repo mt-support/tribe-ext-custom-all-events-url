@@ -4,7 +4,7 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/custom-all-events-url/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-custom-all-events-url/
  * Description:       Allows the definition of a custom URL for the 'All Events' link. The setting can be found under <em>Events > Settings > General tab</em>. Useful if you are using a different starting page for the calendar than the main calendar page, for example when embedding the calendar with a shortcode.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Extension Class:   Tribe\Extensions\CustomAllEventsUrl\Main
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
