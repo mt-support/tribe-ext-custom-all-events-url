@@ -27,6 +27,7 @@
 namespace Tribe\Extensions\CustomAllEventsUrl;
 
 use Tribe__Autoloader;
+use Tribe__Dependency;
 use Tribe__Extension;
 
 /**
@@ -56,11 +57,9 @@ if (
 		private $class_loader;
 
 		/**
-		 * The prefix for our settings keys.
-		 *
-		 * @var string
+		 * @var Settings
 		 */
-		protected $opts_prefix = 'tribe_ext_';
+		private $settings;
 
 		/**
 		 * Setup the Extension's properties.
@@ -69,6 +68,32 @@ if (
 		 */
 		public function construct() {
 			$this->add_required_plugin( 'Tribe__Events__Main' );
+		}
+
+		/**
+		 * Get this plugin's options prefix.
+		 *
+		 * Settings_Helper will append a trailing underscore before each option.
+		 *
+		 * @see \Tribe\Extensions\Example\Settings::set_options_prefix()
+		 *
+		 * @return string
+		 */
+		private function get_options_prefix() {
+			return (string) str_replace( '-', '_', 'tribe-ext-custom-all-events-url' );
+		}
+
+		/**
+		 * Get Settings instance.
+		 *
+		 * @return Settings
+		 */
+		private function get_settings() {
+			if ( empty( $this->settings ) ) {
+				$this->settings = new Settings( $this->get_options_prefix() );
+			}
+
+			return $this->settings;
 		}
 
 		/**
@@ -87,13 +112,9 @@ if (
 			// Load classes
 			$this->class_loader();
 
-			// Load settings
-			if ( is_admin() ) {
-				new Settings();
-			}
+			$this->get_settings();
 
 			// Filters and hooks
-			//add_action( 'admin_init', [ $this, 'add_settings' ] );
 			add_filter( 'tribe_get_events_link', [ $this, 'custom_all_events_url' ] );
 		}
 
@@ -135,7 +156,7 @@ if (
 				$this->class_loader = new Tribe__Autoloader;
 				$this->class_loader->set_dir_separator( '\\' );
 				$this->class_loader->register_prefix(
-					NS,
+					__NAMESPACE__ . '\\',
 					__DIR__ . DIRECTORY_SEPARATOR . 'src'
 				);
 			}
