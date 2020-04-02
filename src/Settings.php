@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUndefinedVariableInspection */
 
 namespace Tribe\Extensions\CustomAllEventsUrl;
 
@@ -29,6 +29,8 @@ if ( ! class_exists( Settings::class ) ) {
 
 		/**
 		 * Settings constructor.
+		 *
+		 * @param $options_prefix
 		 */
 		public function __construct( $options_prefix ) {
 
@@ -95,9 +97,10 @@ if ( ! class_exists( Settings::class ) ) {
 		 *
 		 * @param string $key
 		 *
+		 * @param string $default
+		 *
 		 * @return mixed
 		 * @see tribe_get_option()
-		 *
 		 */
 		public function get_option( $key = '', $default = '' ) {
 			$key = $this->sanitize_option_key( $key );
