@@ -41,21 +41,43 @@ if ( ! class_exists( Settings::class ) ) {
 		}
 
 		/**
+		 * Allow access to set the Settings Helper property.
+		 *
+		 * @see get_settings_helper()
+		 *
+		 * @param Settings_Helper $helper
+		 *
+		 * @return Settings_Helper
+		 */
+		public function set_settings_helper( Settings_Helper $helper ) {
+			$this->settings_helper = $helper;
+
+			return $this->get_settings_helper();
+		}
+
+		/**
+		 * Allow access to get the Settings Helper property.
+		 *
+		 * @see set_settings_helper()
+		 */
+		public function get_settings_helper() {
+			return $this->settings_helper;
+		}
+
+		/**
 		 * Set the options prefix to be used for this extension's settings.
 		 *
-		 * Prefixes with `tribe_ext_` and ends with `_`.
+		 * Recommended: the plugin text domain, with hyphens converted to underscores.
+		 * Is forced to end with a single underscore. All double-underscores are converted to single.
 		 *
-		 * @param string $opts_prefix
+		 * @see get_options_prefix()
+		 *
+		 * @param string $options_prefix
 		 */
-		private function set_options_prefix( $opts_prefix = '' ) {
-			if ( empty( $opts_prefix ) ) {
-				$opts_prefix = str_replace( '-', '_', PLUGIN_TEXT_DOMAIN );
-			}
-			$prefix = 'tribe_ext';
-			if ( 0 === strpos( $opts_prefix, $prefix ) ) {
-				$prefix = '';
-			}
-			$this->opts_prefix = $prefix . $opts_prefix . '_';
+		private function set_options_prefix( $options_prefix ) {
+			$options_prefix = $options_prefix . '_';
+
+			$this->options_prefix = str_replace( '__', '_', $options_prefix );
 		}
 
 		/**
@@ -84,6 +106,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 */
 		private function sanitize_option_key( $key = '' ) {
 			$prefix = $this->get_options_prefix();
+
 			if ( 0 === strpos( $key, $prefix ) ) {
 				$prefix = '';
 			}
