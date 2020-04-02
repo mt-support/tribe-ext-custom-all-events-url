@@ -23,25 +23,10 @@
  *     GNU General Public License for more details.
  */
 
-
 namespace Tribe\Extensions\CustomAllEventsUrl;
 
 use Tribe__Autoloader;
-use Tribe__Dependency;
 use Tribe__Extension;
-
-/**
- * Define Constants
- */
-
-if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
-	define( __NAMESPACE__ . '\NS', __NAMESPACE__ . '\\' );
-}
-
-if ( ! defined( NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
-	// `Tribe\Extensions\CustomAllEventsUrl\PLUGIN_TEXT_DOMAIN` is defined
-	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-custom-all-events-url' );
-}
 
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
 if (
@@ -192,13 +177,10 @@ if (
 		 * @return mixed
 		 */
 		public function get_custom_url() {
-			//$settings = new Settings();
+
 			$settings = $this->get_settings();
 
 			return $settings->get_option( 'custom_all_events_url' );
-
-			//$value = $settings->get_option( 'custom_all_events_url' );
-			//return $value;
 		}
 
 	} // end class

@@ -36,7 +36,6 @@ if ( ! class_exists( Settings::class ) ) {
 
 			$this->set_options_prefix( $options_prefix );
 
-			// Add settings specific to OSM
 			add_action( 'admin_init', [ $this, 'add_settings' ] );
 		}
 
@@ -121,23 +120,6 @@ if ( ! class_exists( Settings::class ) ) {
 			}
 
 			return $prefix . $key;
-		}
-
-		/**
-		 * Given an option key, delete this extension's option value.
-		 *
-		 * This automatically prepends this extension's option prefix so you can just do `$this->delete_option( 'a_setting' )`.
-		 *
-		 * @param string $key
-		 *
-		 * @return mixed
-		 */
-		public function delete_option( $key = '' ) {
-			$key     = $this->sanitize_option_key( $key );
-			$options = Tribe__Settings_Manager::get_options();
-			unset( $options[ $key ] );
-
-			return Tribe__Settings_Manager::set_options( $options );
 		}
 
 		/**
