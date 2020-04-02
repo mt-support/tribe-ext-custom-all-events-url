@@ -131,8 +131,8 @@ if ( ! class_exists( Settings::class ) ) {
 			$fields = [
 				$this->$options_prefix . 'custom_all_events_url' => [
 					'type'            => 'text',
-					'label'           => esc_html__( 'Custom "All Events" URL', PLUGIN_TEXT_DOMAIN ),
-					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', PLUGIN_TEXT_DOMAIN ), '<code>https://wpshindig.com/events/</code>' ),
+					'label'           => esc_html__( 'Custom "All Events" URL', 'tribe-ext-custom-all-events-url' ),
+					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', 'tribe-ext-custom-all-events-url' ), '<code>https://demo.theeventscalendar.com/events/</code>' ),
 					'validation_type' => 'html',
 				]
 			];

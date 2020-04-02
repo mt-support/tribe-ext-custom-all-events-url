@@ -31,7 +31,7 @@ use Tribe__Extension;
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
 if (
 	class_exists( 'Tribe__Extension' )
-	&& ! class_exists( NS . 'Main' )
+	&& ! class_exists( Main::class )
 ) {
 	/**
 	 * Extension main class, class begins loading on init() function.
@@ -87,7 +87,7 @@ if (
 		public function init() {
 
 			// Load plugin textdomain
-			load_plugin_textdomain( PLUGIN_TEXT_DOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( 'tribe-ext-custom-all-events-url', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 			// PHP version check
 			if ( ! $this->php_version_check() ) {
@@ -117,11 +117,11 @@ if (
 					&& current_user_can( 'activate_plugins' )
 				) {
 					$message = '<p>';
-					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
+					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-custom-all-events-url' ), $this->get_name(), $php_required_version );
 					$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
 					$message .= '</p>';
 
-					tribe_notice( PLUGIN_TEXT_DOMAIN . '-php-version', $message, [ 'type' => 'error' ] );
+					tribe_notice( 'tribe-ext-custom-all-events-url' . '-php-version', $message, [ 'type' => 'error' ] );
 				}
 
 				return false;
