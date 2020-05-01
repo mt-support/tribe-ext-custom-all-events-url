@@ -3,7 +3,7 @@ Contributors: ModernTribe
 Donate link: http://m.tri.be/29
 Tags: events, calendar
 Requires at least: 4.5
-Tested up to: 5.4
+Tested up to: 5.4.1
 Requires PHP: 5.6
 Stable tag: 1.1.0
 License: GPL version 3 or any later version
@@ -37,7 +37,7 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 == Changelog ==
 
-= [1.1.0] TBD =
+= [1.1.0] 2020-05-01 =
 
 * Reworked the extension based on the new template for better compatibility
 
