@@ -103,7 +103,7 @@ class Settings_Helper {
 	 * @param string $setting_tab Settings tab from where this will be removed. Example: 'display'.
 	 */
 	public function remove_field( $field_key, $setting_tab ) {
-		$this->remove_fields[$setting_tab][] = $field_key;
+		$this->remove_fields[ $setting_tab ][] = $field_key;
 	}
 
 
