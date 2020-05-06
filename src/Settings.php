@@ -90,7 +90,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 * @return string
 		 */
 		public function get_options_prefix() {
-			return $this->$options_prefix;
+			return $this->options_prefix;
 		}
 
 		/**
@@ -135,7 +135,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 */
 		public function add_settings() {
 			$fields = [
-				$this->$options_prefix . 'custom_all_events_url' => [
+				$this->options_prefix . 'custom_all_events_url' => [
 					'type'            => 'text',
 					'label'           => esc_html__( 'Custom "All Events" URL', 'tribe-ext-custom-all-events-url' ),
 					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', 'tribe-ext-custom-all-events-url' ), '<code>https://demo.theeventscalendar.com/events/</code>' ),
