@@ -162,7 +162,7 @@ if (
 		 */
 		function custom_all_events_url( $url ) {
 
-			$custom_url = $this->get_custom_url();
+			$custom_url = $this->get_settings()->get_option( 'custom_all_events_url' );
 
 			if ( ! empty ( $custom_url ) ) {
 				$url = $custom_url;
@@ -170,6 +170,6 @@ if (
 
 			return $url;
 		}
-		
+
 	} // end class
 } // end if class_exists check
