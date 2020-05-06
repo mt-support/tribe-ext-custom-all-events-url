@@ -170,18 +170,6 @@ if (
 
 			return $url;
 		}
-
-		/**
-		 * Getting the `custom_all_events_url` value.
-		 *
-		 * @return mixed
-		 */
-		public function get_custom_url() {
-
-			$settings = $this->get_settings();
-
-			return $settings->get_option( 'custom_all_events_url' );
-		}
-
+		
 	} // end class
 } // end if class_exists check
