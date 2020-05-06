@@ -65,7 +65,7 @@ if (
 		 * @return string
 		 */
 		private function get_options_prefix() {
-			return (string) str_replace( '-', '_', 'tribe-ext-custom-all-events-url' );
+			return $this->options_prefix;
 		}
 
 		/**
