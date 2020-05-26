@@ -77,7 +77,7 @@ if ( ! class_exists( Settings::class ) ) {
 		 */
 		private function set_options_prefix( $options_prefix = '' ) {
 			if ( empty( $opts_prefix ) ) {
-				$opts_prefix = str_replace( '-', '_', 'tribe-ext-extension-template' ); // The text domain.
+				$opts_prefix = str_replace( '-', '_', 'tribe-ext-custom-all-events-url' ); // The text domain.
 			}
 
 			$opts_prefix = $opts_prefix . '_';
