@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpUndefinedVariableInspection */
+<?php
 
 namespace Tribe\Extensions\CustomAllEventsUrl;
 
