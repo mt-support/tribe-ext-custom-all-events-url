@@ -65,7 +65,6 @@ if (
 		 * @return string
 		 */
 		private function get_options_prefix() {
-			//return $this->settings->get_options_prefix;
 			return (string) str_replace( '-', '_', 'tribe-ext-tec-tweaks' );
 		}
 
