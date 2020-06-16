@@ -1,3 +1,5 @@
+*This extension has been merged into [The Events Calendar: Tweaks](https://github.com/mt-support/tribe-ext-tec-tweaks)*
+
 === The Events Calendar Extension: Custom 'All Events' URL ===
 Contributors: ModernTribe
 Donate link: http://m.tri.be/29
